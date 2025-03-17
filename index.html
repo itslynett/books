@@ -1,13 +1,24 @@
-<DOCTYPE html>
-  <html>
-    <head>
-      <meta charset= "UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Library Management System</title>
-      <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-      <<h1>Library System</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Library System</h1>
+    
+    <!-- Book Form -->
+    <div class="book-form">
+        <input type="text" id="bookTitle" placeholder="Book Title" required>
+        <input type="text" id="bookAuthor" placeholder="Author" required>
+        <button onclick="addBook()">Add Book</button>
+    </div>
+
+    <!-- Book List -->
     <div class="book-list" id="bookList"></div>
-    </body>
-  </html>
+
+    <script src="script.js"></script>
+</body>
+</html>
