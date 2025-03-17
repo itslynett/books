@@ -7,8 +7,8 @@ let books = [
 
 // Function to render books on the page
 function displayBooks() {
-  const libraryDiv = document.getElementById("library");
-  libraryDiv.innerHTML = ""; // Clear existing content
+  const bookList = document.getElementById("bookList");
+  bookList.innerHTML = ""; // Clear existing content
 
   books.forEach(book => {
     let bookDiv = document.createElement("div");
@@ -23,7 +23,7 @@ function displayBooks() {
       <button class="return" ${book.isAvailable ? "disabled" : ""} onclick="returnBook(${book.id})">Return</button>
     `;
 
-    libraryDiv.appendChild(bookDiv);
+    bookList.appendChild(bookDiv);
   });
 }
 
@@ -47,5 +47,34 @@ function returnBook(bookId) {
   }
 }
 
+// Function to add a new book
+function addBook() {
+  let title = document.getElementById("bookTitle").value.trim();
+  let author = document.getElementById("bookAuthor").value.trim();
+  let year = new Date().getFullYear(); // Default year to current year
+
+  if (title === "" || author === "") {
+    alert("Please enter both title and author.");
+    return;
+  }
+
+  let newBook = {
+    id: books.length ? books[books.length - 1].id + 1 : 1, // Generate unique ID
+    title: title,
+    author: author,
+    year: year,
+    isAvailable: true
+  };
+
+  books.push(newBook);
+  alert(`"${title}" has been added to the library.`);
+  displayBooks(); // Update book list
+
+  // Clear input fields
+  document.getElementById("bookTitle").value = "";
+  document.getElementById("bookAuthor").value = "";
+}
+
 // Initial display of books
 displayBooks();
+
